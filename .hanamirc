@@ -1,0 +1,4 @@
+project=distruct_me
+architecture=container
+test=minitest
+template=erb
