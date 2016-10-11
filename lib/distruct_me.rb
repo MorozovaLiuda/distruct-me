@@ -32,7 +32,7 @@ Hanami::Model.configure do
   #
   # Intended for specifying application wide mappings.
   #
-  mapping do
+  # mapping do
     # collection :users do
     #   entity     User
     #   repository UserRepository
@@ -40,7 +40,7 @@ Hanami::Model.configure do
     #   attribute :id,   Integer
     #   attribute :name, String
     # end
-  end
+  # end
 end.load!
 
 Hanami::Mailer.configure do
