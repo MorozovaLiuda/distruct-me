@@ -1,6 +1,6 @@
 $('#create-message, .options, .more-options').hide();
 $('#copy-link').show();
-$('.form-group textarea').val('<%= Web::Routes.url(:message, id: message.id.gsub('-', '')) %>')
+$('.form-group textarea').val('<%= ENV['BASE_URL'] + Web::Routes.path(:message, id: message.id.gsub('-', '')) %>')
 
 $('#copy-link').click(function() {
     $('.form-group textarea').select();
