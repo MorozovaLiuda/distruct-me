@@ -3,3 +3,6 @@
 #
 # Example:
 # get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }
+resources :messages
+post '/messages', to: 'messages#create', as: :message
+root to: 'messages#main'

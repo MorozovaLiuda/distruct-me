@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+    <%=
+      form_for :message, routes.messages_path, id: 'create-form', 'data-remote': true do
+        div class: "input form-group" do
+          text_area :text, class: "form-control", rows:"13", cols: '43', id: "text"
+          p class: 'validation-error-text', style: "display: none;"
+          div class: 'more-options', style: 'display:none;' do
+            p class: 'clicks-checkbox' do
+              values = Hash[ 'Destroy after provided number of clicks(default is 1)' => '0' , 'Destroy after provided number of hours(default is 1)' =>  '1']
+              select :distruct_method, values, options: {class: "form-control"}
+              text_field :total_amount, class: "form-control", id: 'total-amount', value: 1
+            end
+          end
+          hidden_field :current_clicks, value: 1
+          p class: 'validation-error-amount', style: "display: none;"
+            submit 'Generate Link!', class: "btn btn-success", id: "create-message"
+            button 'More options', class: "btn btn-success options", id: "more-options"
+        end
+      end
+    %>
+    <button type="button" class="btn btn-success" id="copy-link" style="display: none;".> Copy link! </button>
+    </div>
+  </div>
+</div>
+

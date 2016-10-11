@@ -1,5 +1,7 @@
 require 'hanami/helpers'
 require 'hanami/assets'
+require 'base64'
+require "aescrypt"
 
 module Web
   class Application < Hanami::Application
@@ -225,22 +227,22 @@ module Web
       #
       #  * https://developer.mozilla.org/en-US/docs/Web/Security/CSP/CSP_policy_directives
       #
-      security.content_security_policy %{
-        form-action 'self';
-        frame-ancestors 'self';
-        base-uri 'self';
-        default-src 'none';
-        script-src 'self';
-        connect-src 'self';
-        img-src 'self' https: data:;
-        style-src 'self' 'unsafe-inline' https:;
-        font-src 'self';
-        object-src 'none';
-        plugin-types application/pdf;
-        child-src 'self';
-        frame-src 'self';
-        media-src 'self'
-      }
+      # security.content_security_policy %{
+      #   form-action 'self';
+      #   frame-ancestors 'self';
+      #   base-uri 'self';
+      #   default-src 'none';
+      #   script-src 'self';
+      #   connect-src 'self';
+      #   img-src 'self' https: data:;
+      #   style-src 'self' 'unsafe-inline' https:;
+      #   font-src 'self';
+      #   object-src 'none';
+      #   plugin-types application/pdf;
+      #   child-src 'self';
+      #   frame-src 'self';
+      #   media-src 'self'
+      # }
 
       ##
       # FRAMEWORKS
@@ -282,7 +284,7 @@ module Web
       # logger.level :debug
       #
       # Logger format. It defaults to DEFAULT
-      # logger.format :default
+      logger.format :default
     end
 
     ##

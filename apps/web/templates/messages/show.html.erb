@@ -1,0 +1,17 @@
+<div class="container">
+  <% if message %>
+  <p> <%= countdown ? "You message will be destoyed in" : "#{clicks_left.nil? ? "Your message was already destroyed" : "You message will be destroyed after #{clicks_left} link visits" }" %>
+  <span id="countdown"></span> </p>
+  <%=
+    form_for :message, '', 'data-remote': true do
+      div class: "input form-group" do
+        text_area :message, class: "form-control", rows:"13", cols: '43', id: "text", readonly: 'readonly'
+      end
+    end
+   %>
+ <%= render partial: 'countdown', locals: { countdown: countdown }  if countdown  %>
+  <% else %>
+    <h2>This message was already destroyed! </h2>
+  <% end %>
+</div>
+

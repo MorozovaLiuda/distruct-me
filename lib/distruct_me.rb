@@ -16,7 +16,7 @@ Hanami::Model.configure do
   #
   #  * SQL adapter
   #    adapter type: :sql, uri: 'sqlite://db/distruct_me_development.sqlite3'
-  #    adapter type: :sql, uri: 'postgres://localhost/distruct_me_development'
+       # adapter type: :sql, uri: DATABASE_URL
   #    adapter type: :sql, uri: 'mysql://localhost/distruct_me_development'
   #
   adapter type: :sql, uri: ENV['DATABASE_URL']

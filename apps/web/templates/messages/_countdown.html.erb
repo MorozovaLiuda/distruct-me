@@ -1,0 +1,28 @@
+ <script>
+ $('textarea').val('<%= decrypted_text %>')
+  $("#countdown")
+  .countdown("<%= countdown %>", {elapse: true}).on('update.countdown', function(event) {
+    if (event.elapsed) {
+      $("#countdown").countdown('stop');
+      $.ajax({
+        type: 'DELETE',
+        url: '/messages/' + '<%= message.id %>' ,
+        datatype : 'json',
+        contentType: 'application/json; charset=UTF-8',
+        success: function(data) {
+          $('p').text('Your time is out. This message was destroyed! ')
+          $('#message-form').hide();
+        }
+        });
+    } else {
+       var format = '%H:%M:%S';
+        if(event.offset.totalDays > 0) {
+          format = '%-d day%!d ' + format;
+        }
+        if(event.offset.weeks > 0) {
+          format = '%-w week%!w ' + format;
+        }
+        $(this).html(event.strftime(format));
+      }
+    });
+</script>
