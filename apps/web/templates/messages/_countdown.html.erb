@@ -1,5 +1,4 @@
  <script>
- $('textarea').val('<%= decrypted_text %>')
   $("#countdown")
   .countdown("<%= countdown %>", {elapse: true}).on('update.countdown', function(event) {
     if (event.elapsed) {

@@ -9,6 +9,9 @@
       end
     end
    %>
+  <script>
+   $('textarea').val('<%= decrypted_text %>')
+  </script>
  <%= render partial: 'countdown', locals: { countdown: countdown }  if countdown  %>
   <% else %>
     <h2>This message was already destroyed! </h2>
