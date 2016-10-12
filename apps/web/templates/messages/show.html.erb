@@ -1,16 +1,26 @@
 <div class="container">
-  <% if message %>
-  <p> <%= countdown ? "You message will be destoyed in" : "#{clicks_left.nil? ? "Your message was already destroyed" : "You message will be destroyed after #{clicks_left} link visits" }" %>
-  <span id="countdown"></span> </p>
-  <%=
-    form_for :message, '', 'data-remote': true do
-      div class: "input form-group" do
-        text_area :message, class: "form-control", rows:"13", cols: '43', id: "text", readonly: 'readonly'
-      end
-    end
-   %>
-  <script>
-   $('textarea').val('<%= decrypted_text %>')
+<% if message %>
+  <%= render partial: 'show_message' , locals: {message: message}%>
+    <script>
+  <% if message.client_password.nil? %>
+    $('.client_password_form').hide();
+    $('textarea#text').val('<%= decrypted_text%>')
+  <% else %>
+    $('.message').hide();
+    $('textarea#text').val(CryptoJS.AES.decrypt('<%= message.text %>','<%= message.client_password %>').toString(CryptoJS.enc.Utf8))
+  <% end %>
+
+  $('#show-message').click(function(){
+    entered_value = $('#client_password').val();
+    db_password = '<%= message.client_password %>'
+    if (entered_value == db_password ){
+      debugger;
+      $('.client_password_form').hide();
+      $('.message').show();
+    } else {
+      $('.validate-client-password').html('Password id wrong! Please, try again').css({color: 'red'}).show();
+      }
+    })
   </script>
  <%= render partial: 'countdown', locals: { countdown: countdown }  if countdown  %>
   <% else %>

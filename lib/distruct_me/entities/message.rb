@@ -2,7 +2,7 @@ require 'hanami/model'
 
 class Message
   include Hanami::Entity
-  attributes :id, :text, :current_clicks, :total_amount, :distruct_method, :show_start_time
+  attributes :id, :text, :current_clicks, :total_amount, :distruct_method, :show_start_time, :client_password
 end
 
 class MessageRepository
@@ -23,6 +23,7 @@ Hanami::Model.configure do
         attribute :total_amount,  Integer
         attribute :distruct_method, Integer
         attribute :show_start_time, Time
+        attribute :client_password, String
     end
   end
 end

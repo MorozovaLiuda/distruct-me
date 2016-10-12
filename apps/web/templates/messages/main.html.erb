@@ -11,6 +11,11 @@
               values = Hash[ 'Destroy after provided number of clicks(default is 1)' => '0' , 'Destroy after provided number of hours(default is 1)' =>  '1']
               select :distruct_method, values, options: {class: "form-control"}
               text_field :total_amount, class: "form-control", id: 'total-amount', value: 1
+              p class: 'client_password' do
+                'Enter password to encrypt your message!'
+              end
+              text_field :client_password, type: 'password', class: "form-control", id: 'client_password'
+              p class: 'validation-client-password', style: "display: none;"
             end
           end
           hidden_field :current_clicks, value: 1

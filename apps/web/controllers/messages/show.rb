@@ -14,7 +14,9 @@ module Web::Controllers::Messages
     def destroy?
       @message = MessageRepository.find(params[:id])
       if @message
-        @decrypted_text = AESCrypt.decrypt(@message.text, ENV['AES_PASSWORD'])
+        if @message.client_password.nil?
+          @decrypted_text = AESCrypt.decrypt(@message.text, ENV['AES_PASSWORD'])
+        end
         if @message.distruct_method == 0
           if @message.total_amount == @message.current_clicks
             MessageRepository.delete(@message)

@@ -14,12 +14,20 @@ function check_if_integer(value){
   $('#create-message').click(function(e){
     e.preventDefault
     value = $('#total-amount').val();
-    if ($('textarea#text').val() == ''){
+    text = $('textarea#text').val()
+    client_password = $('#client_password').val()
+    if (text == ''){
       $('.validation-error-text').html('Message can not be blank!').css({color: 'red'}).show();
       return false;
     }
-    if (check_if_integer(value) && $('textarea#text').val != ''){
+    if (check_if_integer(value) && text != ''){
       $('.validation-error-text').hide();
+      if ($('#client_password').val() == ''){
+        $('#client_password').prop( "disabled", true );
+      }
+      else {
+        $('textarea#text').val(CryptoJS.AES.encrypt(text, client_password).toString())
+      }
       $('#create-form').submit();
     }
   });
@@ -36,4 +44,3 @@ function check_if_integer(value){
     return false;
   })
 });
-

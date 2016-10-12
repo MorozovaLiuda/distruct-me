@@ -1,0 +1,24 @@
+<div class = 'client_password_form' >
+<%=
+    form_for :message, '', 'data-remote': true do
+      div class: "input form-group" do
+        text_field :client_password, type: 'password', class: "form-control", id: 'client_password'
+        hidden_field :db_client_password, value: message.client_password
+        p class: 'validate-client-password'
+         submit 'Show message!', class: "btn btn-success", id: "show-message"
+      end
+    end
+   %>
+</div>
+<div class = 'message' >
+<p> <%= countdown ? "You message will be destoyed in" : "#{clicks_left.nil? ? "Your message was already destroyed" : "You message will be destroyed after #{clicks_left} link visits" }" %>
+    <span id="countdown"></span> </p>
+    <%=
+      form_for :message, '', 'data-remote': true do
+        div class: "input form-group" do
+        text_area :message, class: "form-control", rows:"13", cols: '43', id: "text", readonly: 'readonly'
+        end
+      end
+    %>
+   </div>
+
