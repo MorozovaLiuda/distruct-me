@@ -8,7 +8,7 @@
           p class: 'validation-error-text', style: "display: none;"
           div class: 'more-options', style: 'display:none;' do
             p class: 'clicks-checkbox' do
-              values = Hash[ 'Destroy after provided number of clicks(default is 1)' => '0' , 'Destroy after provided number of hours(default is 1)' =>  '1']
+              values = Hash[ 'Destroy after provided number of link visits (default is 1)' => '0' , 'Destroy after provided number of hours (default is 1)' =>  '1']
               select :distruct_method, values, options: {class: "form-control"}
               text_field :total_amount, class: "form-control", id: 'total-amount', value: 1
               p class: 'validation-error-amount', style: "display: none;"

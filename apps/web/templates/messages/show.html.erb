@@ -14,7 +14,6 @@
     entered_value = $('#client_password').val();
     db_password = '<%= message.client_password %>'
     if (entered_value == db_password ){
-      debugger;
       $('.client_password_form').hide();
       $('.message').show();
     } else {

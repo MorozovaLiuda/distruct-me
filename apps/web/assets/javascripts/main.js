@@ -10,7 +10,7 @@ function check_if_integer(value){
 }
 
   $('#create-message').click(function(e){
-    e.preventDefault
+    e.preventDefault;
     value = $('#total-amount').val();
     text = $('textarea#text').val()
     client_password = $('#client_password').val()
@@ -27,6 +27,7 @@ function check_if_integer(value){
         $('textarea#text').val(CryptoJS.AES.encrypt(text, client_password).toString())
       }
       $('#create-form').submit();
+      return false;
     }
   });
 
