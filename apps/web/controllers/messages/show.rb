@@ -7,6 +7,10 @@ module Web::Controllers::Messages
     expose :countdown
     expose :clicks_left
 
+    def initialize(repository: MessageRepository)
+      @repository = repository
+    end
+
     def call(params)
     end
 

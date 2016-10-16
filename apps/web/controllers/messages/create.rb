@@ -9,9 +9,10 @@ module Web::Controllers::Messages
       @message = MessageRepository.create(Message.new(params[:message]))
     end
 
+
     private
     def encrypt_text
-     if @message.client_password.nil?
+     if @message && @message.client_password.nil?
       @message.text = AESCrypt.encrypt(@message.text, ENV['AES_PASSWORD'])
       MessageRepository.update(@message)
      end

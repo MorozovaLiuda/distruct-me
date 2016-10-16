@@ -27,6 +27,7 @@ end
 group :test do
   gem 'minitest'
   gem 'capybara'
+  gem 'rspec-hanami'
 end
 
 group :production do

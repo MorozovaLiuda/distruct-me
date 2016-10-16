@@ -2,8 +2,6 @@ $(document).ready(function() {
 function check_if_integer(value){
   if ($.isNumeric(value) && Math.floor(value) == value && value < 1000){
     return true
-  } else if ($('#total-amount').val() == '' || $('#total-amount').is(':hidden')) {
-    return true
   } else if ($.isNumeric(value) && Math.floor(value) == value  && value > 1000){
     $('.validation-error-amount').html('Provided value is too big!').css({color: 'red'}).show();
   } else{
